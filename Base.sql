@@ -21,10 +21,10 @@ CREATE TABLE Utilisateur(
 
 CREATE TABLE Particulier(
         identifiant        Int  Auto_increment  NOT NULL ,
-        siteWebParticulier Varchar (50) NOT NULL ,
         nom                Varchar (50) NOT NULL ,
         prenom             Varchar (50) NOT NULL ,
-        mail               Varchar (50) NOT NULL
+        mail               Varchar (50) NOT NULL ,
+        siteWebParticulier Varchar (50) NOT NULL
 	,CONSTRAINT Particulier_PK PRIMARY KEY (identifiant)
 )ENGINE=InnoDB;
 
@@ -68,15 +68,12 @@ CREATE TABLE Telephone(
 #------------------------------------------------------------
 
 CREATE TABLE Adresse(
-        idAdresse          Int  Auto_increment  NOT NULL ,
-        adresseParticulier Varchar (50) NOT NULL ,
-        adressePro         Varchar (50) NOT NULL ,
-        adresseEntreprise  Varchar (50) NOT NULL ,
-        codePostal         Varchar (10) NOT NULL ,
-        numeroRue          Varchar (50) NOT NULL ,
-        rue                Varchar (50) NOT NULL ,
-        etage              Varchar (50) NOT NULL ,
-        ville              Varchar (50) NOT NULL
+        idAdresse  Int  Auto_increment  NOT NULL ,
+        codePostal Varchar (10) NOT NULL ,
+        numeroRue  Varchar (50) NOT NULL ,
+        rue        Varchar (50) NOT NULL ,
+        etage      Varchar (50) NOT NULL ,
+        ville      Varchar (50) NOT NULL
 	,CONSTRAINT Adresse_PK PRIMARY KEY (idAdresse)
 )ENGINE=InnoDB;
 
