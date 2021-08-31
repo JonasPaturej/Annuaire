@@ -24,7 +24,7 @@ CREATE TABLE Particulier(
         siteWebParticulier Varchar (50) NOT NULL ,
         nom                Varchar (50) NOT NULL ,
         prenom             Varchar (50) NOT NULL ,
-        mail               Int NOT NULL
+        mail               Varchar (50) NOT NULL
 	,CONSTRAINT Particulier_PK PRIMARY KEY (identifiant)
 )ENGINE=InnoDB;
 
