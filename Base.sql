@@ -23,7 +23,7 @@ CREATE TABLE Personne(
         identifiant Int  Auto_increment  NOT NULL ,
         nom         Varchar (50) NOT NULL ,
         prenom      Varchar (50) NOT NULL ,
-        mail        Int NOT NULL
+        mail        Varchar (50) NOT NULL
 	,CONSTRAINT Personne_PK PRIMARY KEY (identifiant)
 )ENGINE=InnoDB;
 
@@ -37,7 +37,7 @@ CREATE TABLE Particulier(
         siteWebParticulier Varchar (50) NOT NULL ,
         nom                Varchar (50) NOT NULL ,
         prenom             Varchar (50) NOT NULL ,
-        mail               Int NOT NULL
+        mail               Varchar (50) NOT NULL
 	,CONSTRAINT Particulier_PK PRIMARY KEY (identifiant)
 
 	,CONSTRAINT Particulier_Personne_FK FOREIGN KEY (identifiant) REFERENCES Personne(identifiant)
@@ -49,7 +49,7 @@ CREATE TABLE Particulier(
 #------------------------------------------------------------
 
 CREATE TABLE Telephone(
-        numeroTel   Int NOT NULL ,
+        numeroTel   Varchar (20) NOT NULL ,
         typeTel     Varchar (20) NOT NULL ,
         identifiant Int NOT NULL
 	,CONSTRAINT Telephone_PK PRIMARY KEY (numeroTel)
@@ -67,8 +67,8 @@ CREATE TABLE Adresse(
         adresseParticulier Varchar (50) NOT NULL ,
         adressePro         Varchar (50) NOT NULL ,
         adresseEntreprise  Varchar (50) NOT NULL ,
-        codePostal         Int NOT NULL ,
-        numeroRue          Int NOT NULL ,
+        codePostal         Varchar (10) NOT NULL ,
+        numeroRue          Varchar (50) NOT NULL ,
         rue                Varchar (50) NOT NULL ,
         etage              Varchar (50) NOT NULL ,
         ville              Varchar (50) NOT NULL
@@ -85,7 +85,7 @@ CREATE TABLE Professionnel(
         siteWebPro  Varchar (50) NOT NULL ,
         nom         Varchar (50) NOT NULL ,
         prenom      Varchar (50) NOT NULL ,
-        mail        Int NOT NULL
+        mail        Varchar (50) NOT NULL
 	,CONSTRAINT Professionnel_PK PRIMARY KEY (identifiant)
 
 	,CONSTRAINT Professionnel_Personne_FK FOREIGN KEY (identifiant) REFERENCES Personne(identifiant)
@@ -101,9 +101,9 @@ CREATE TABLE Entreprise(
         nomEntreprise         Varchar (50) NOT NULL ,
         mailEntreprise        Varchar (50) NOT NULL ,
         adresseEntreprise     Varchar (50) NOT NULL ,
-        numeroSIRET           Int NOT NULL ,
-        numeroTVA             Int NOT NULL ,
-        numeroInscription     Int NOT NULL ,
+        numeroSIRET           Varchar (20) NOT NULL ,
+        numeroTVA             Varchar (50) NOT NULL ,
+        numeroInscription     Varchar (50) NOT NULL ,
         siteWebEntreprise     Varchar (50) NOT NULL ,
         identifiant           Int NOT NULL
 	,CONSTRAINT Entreprise_PK PRIMARY KEY (identifiantEntreprise)
