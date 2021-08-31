@@ -16,31 +16,36 @@ CREATE TABLE Utilisateur(
 
 
 #------------------------------------------------------------
-# Table: Personne
-#------------------------------------------------------------
-
-CREATE TABLE Personne(
-        identifiant Int  Auto_increment  NOT NULL ,
-        nom         Varchar (50) NOT NULL ,
-        prenom      Varchar (50) NOT NULL ,
-        mail        Varchar (50) NOT NULL
-	,CONSTRAINT Personne_PK PRIMARY KEY (identifiant)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Particulier
 #------------------------------------------------------------
 
 CREATE TABLE Particulier(
-        identifiant        Int NOT NULL ,
+        identifiant        Int  Auto_increment  NOT NULL ,
         siteWebParticulier Varchar (50) NOT NULL ,
         nom                Varchar (50) NOT NULL ,
         prenom             Varchar (50) NOT NULL ,
-        mail               Varchar (50) NOT NULL
+        mail               Int NOT NULL
 	,CONSTRAINT Particulier_PK PRIMARY KEY (identifiant)
+)ENGINE=InnoDB;
 
-	,CONSTRAINT Particulier_Personne_FK FOREIGN KEY (identifiant) REFERENCES Personne(identifiant)
+
+#------------------------------------------------------------
+# Table: Entreprise
+#------------------------------------------------------------
+
+CREATE TABLE Entreprise(
+        identifiantEntreprise Int  Auto_increment  NOT NULL ,
+        nomEntreprise         Varchar (50) NOT NULL ,
+        mailEntreprise        Varchar (50) NOT NULL ,
+        adresseEntreprise     Varchar (50) NOT NULL ,
+        numeroSIRET           Varchar (20) NOT NULL ,
+        numeroTVA             Varchar (50) NOT NULL ,
+        numeroInscription     Varchar (50) NOT NULL ,
+        siteWebEntreprise     Varchar (50) NOT NULL ,
+        identifiant           Int NOT NULL
+	,CONSTRAINT Entreprise_PK PRIMARY KEY (identifiantEntreprise)
+
+	,CONSTRAINT Entreprise_Particulier_FK FOREIGN KEY (identifiant) REFERENCES Particulier(identifiant)
 )ENGINE=InnoDB;
 
 
@@ -54,7 +59,7 @@ CREATE TABLE Telephone(
         identifiant Int NOT NULL
 	,CONSTRAINT Telephone_PK PRIMARY KEY (numeroTel)
 
-	,CONSTRAINT Telephone_Personne_FK FOREIGN KEY (identifiant) REFERENCES Personne(identifiant)
+	,CONSTRAINT Telephone_Particulier_FK FOREIGN KEY (identifiant) REFERENCES Particulier(identifiant)
 )ENGINE=InnoDB;
 
 
@@ -77,42 +82,6 @@ CREATE TABLE Adresse(
 
 
 #------------------------------------------------------------
-# Table: Professionnel
-#------------------------------------------------------------
-
-CREATE TABLE Professionnel(
-        identifiant Int NOT NULL ,
-        siteWebPro  Varchar (50) NOT NULL ,
-        nom         Varchar (50) NOT NULL ,
-        prenom      Varchar (50) NOT NULL ,
-        mail        Varchar (50) NOT NULL
-	,CONSTRAINT Professionnel_PK PRIMARY KEY (identifiant)
-
-	,CONSTRAINT Professionnel_Personne_FK FOREIGN KEY (identifiant) REFERENCES Personne(identifiant)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Entreprise
-#------------------------------------------------------------
-
-CREATE TABLE Entreprise(
-        identifiantEntreprise Int  Auto_increment  NOT NULL ,
-        nomEntreprise         Varchar (50) NOT NULL ,
-        mailEntreprise        Varchar (50) NOT NULL ,
-        adresseEntreprise     Varchar (50) NOT NULL ,
-        numeroSIRET           Varchar (20) NOT NULL ,
-        numeroTVA             Varchar (50) NOT NULL ,
-        numeroInscription     Varchar (50) NOT NULL ,
-        siteWebEntreprise     Varchar (50) NOT NULL ,
-        identifiant           Int NOT NULL
-	,CONSTRAINT Entreprise_PK PRIMARY KEY (identifiantEntreprise)
-
-	,CONSTRAINT Entreprise_Professionnel_FK FOREIGN KEY (identifiant) REFERENCES Professionnel(identifiant)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Habiter
 #------------------------------------------------------------
 
@@ -121,7 +90,7 @@ CREATE TABLE Habiter(
         idAdresse   Int NOT NULL
 	,CONSTRAINT Habiter_PK PRIMARY KEY (identifiant,idAdresse)
 
-	,CONSTRAINT Habiter_Personne_FK FOREIGN KEY (identifiant) REFERENCES Personne(identifiant)
+	,CONSTRAINT Habiter_Particulier_FK FOREIGN KEY (identifiant) REFERENCES Particulier(identifiant)
 	,CONSTRAINT Habiter_Adresse0_FK FOREIGN KEY (idAdresse) REFERENCES Adresse(idAdresse)
 )ENGINE=InnoDB;
 
